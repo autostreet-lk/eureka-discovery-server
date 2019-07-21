@@ -1,9 +1,10 @@
-version: '3.0'
+version: '3.5'
 
 services:
 
   eureka-discovery-server:
     image: eureka-discovery-server:latest
+    container_name: eureka-discovery-server
     build:
       context: ./
       dockerfile: Dockerfile
@@ -12,8 +13,9 @@ services:
     volumes:
       - /data/app
     networks:
-      - autostreet
+      - autostreet_shared
 
 networks:
-  autostreet:
-    driver: bridge
+  autostreet_shared:
+    external: true
+    name: autostreet_shared
