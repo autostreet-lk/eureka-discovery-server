@@ -1,0 +1,19 @@
+version: '3.0'
+
+services:
+
+  eureka-discovery-server:
+    image: eureka-discovery-server:latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    volumes:
+      - /data/app
+    networks:
+      - autostreet
+
+networks:
+  autostreet:
+    driver: bridge
